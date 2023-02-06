@@ -230,4 +230,18 @@ def goalkeeper_df (df):
 
     return fifa_gk
 
+# Squared deviations sum function with respect to 2020's mean values per variable.
+def squared_error (df):
+    """
+    We'll use this function to take a FIFA ratings dataset as reference to make our 2020 Ballon d'Or prediction.
+    This function takes a dataframe as argument and
+    Returns the sum of the squared deviations of its variables' means with respect to 2020's
+    """
+    list1 = list(fifa_20.describe().loc['mean'])
+    list2 = list(df.describe().loc['mean'])
+    
+    sum_of_square_differences = [(list1[i] - list2[i])**2 for i in range(len(list1))]
+
+    return sum([x for x in sum_of_square_differences if str(x) != 'nan'])
+
 # VISUALIZATION FUNCTIONS

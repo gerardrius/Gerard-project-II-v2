@@ -9,8 +9,6 @@ FIFA, also known as FIFA Football and to be rebranded as EA Sports FC from 2023,
 <img src=images/giphy.gif alt=“kang” width=“1000”/>
 </center>
 
-![dancing_gif](images/giphy.gif)
-
 A key factor of FIFA's success is its realism; EA Sports developers keep making huge efforts to make the game more and more close to how a real football game looks like from a TV. More on that, realism does not only lie in the visuals of the game but also on the behaviour and actual performance of players within the game. 
 
 FIFA has license on most professional leagues and competitions, so the game is played with real clubs and players, which make it really attractive for the user. However, this implies a high degree of complexity and uniqueness; there is not a single player with exactly the same attributes.
