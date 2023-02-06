@@ -245,3 +245,38 @@ def squared_error (df):
     return sum([x for x in sum_of_square_differences if str(x) != 'nan'])
 
 # VISUALIZATION FUNCTIONS
+def drop_gk_attributes (player_df):
+    """
+    This function drops all elements belonging to goalkeeping attribute columns, since they can affect the correlation of other 
+    meaningful player attributes.
+    """
+    player_df.drop(['goalkeeping_diving', 'goalkeeping_handling', 'goalkeeping_kicking', 'goalkeeping_positioning', 'goalkeeping_reflexes', 'goalkeeping_speed'], axis = 1, inplace = True)
+
+    return player_df
+
+
+def regression_runner ():
+    """
+    This function provides a dataframe with the results of the prediction of 2020's Ballon d'Or results
+    Does not take any argument and
+    Returns the mentioned dataframe
+    """
+    # Takes the explanatory variables' beta from the visualizations file as well as the fifa20 dataframe (could be modified to accept arguments and perform other regressions)
+    df = fifa_20_reg
+    alpha = res.params['const']
+    beta_overall = res.params['overall']
+    beta_wage = res.params['wage_eur']
+    beta_age = res.params['age']
+    beta_weight = res.params['weight_kg']
+    results_list = []
+        
+    # Iterates through a subset made out of the explanatory variables and appends the results to the returned dataframe, which is sorted by expected points.
+    for i in range(fifa_20_reg.shape[0]):
+        results_list.append(alpha + fifa_20_reg.loc[fifa_20_reg['level_0'] == i]['overall'][i]*beta_overall + fifa_20_reg.loc[fifa_20_reg['level_0'] == i]['wage_eur'][i]*beta_wage + fifa_20_reg.loc[fifa_20_reg['level_0'] == i]['age'][i]*beta_age +fifa_20_reg.loc[fifa_20_reg['level_0'] == i]['weight_kg'][i]*beta_weight)
+    
+    fifa_20.insert(0, "Expected points", results_list)
+    fifa_20.sort_values(by=['Expected points'], ascending=False, inplace=True)
+    
+    return fifa_20[['Expected points', 'long_name']].head(10)
+
+# Plot functions to be included to make the plot proces more agile.
