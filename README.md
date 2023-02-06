@@ -48,23 +48,18 @@ Last, we will try to predict which would have been the winner of 2020's Ballon d
 Correlations between Ballon d'Or points and FIFA ratings.
 Definition of FIFA attributes of interest
 
-Players
-- Ratings
+Non-FIFA attributes
+- Player position
+    - Player generic position
+    - Player specific position distribution
+- Country
+- League
+- Wage distribution
 
-- Positions
+FIFA ratings and stats
+- Overall rating - Ballon d'Or points
+- Age distribution - Ballon d'Or points
+- FIFA Stats
+    - Pace, shooting, passing, dribbling, defending, physic
 
-- Shot
-
-- Pass
-
-- Skills
-
-
-Goalkeepers
-- Ratings
-- Goalkeeper attributes
-
-- Correlation measures
-    - Overall rating/votes
-    - Position in the field/votes
-    - Other attributes/votes
+### Regression analysis and 2020 winner prediction
