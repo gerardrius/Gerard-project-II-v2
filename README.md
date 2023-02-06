@@ -63,3 +63,6 @@ FIFA ratings and stats
     - Pace, shooting, passing, dribbling, defending, physic
 
 ### Regression analysis and 2020 winner prediction
+Definition of explanatory variables
+Creation of the model
+Results
