@@ -5,6 +5,10 @@ FIFA, also known as FIFA Football and to be rebranded as EA Sports FC from 2023,
 
 ### 🕺🏼 FIFA is widely considered the best sports video game franchise in the world!
 
+<center>
+<img src=images/giphy.gif alt=“kang” width=“500”/>
+</center>
+
 ![dancing_gif](images/giphy.gif)
 
 A key factor of FIFA's success is its realism; EA Sports developers keep making huge efforts to make the game more and more close to how a real football game looks like from a TV. More on that, realism does not only lie in the visuals of the game but also on the behaviour and actual performance of players within the game. 
