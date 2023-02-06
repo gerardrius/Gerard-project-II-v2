@@ -5,7 +5,7 @@ FIFA, also known as FIFA Football and to be rebranded as EA Sports FC from 2023,
 
 ### 🕺🏼 FIFA is widely considered the best sports video game franchise in the world!
 
-![dancing_gif](../Gerard-project-II-v2/images/giphy.gif)
+![dancing_gif](images/giphy.gif)
 
 A key factor of FIFA's success is its realism; EA Sports developers keep making huge efforts to make the game more and more close to how a real football game looks like from a TV. More on that, realism does not only lie in the visuals of the game but also on the behaviour and actual performance of players within the game. 
 
@@ -13,7 +13,7 @@ FIFA has license on most professional leagues and competitions, so the game is p
 
 Each player has its ratings and attributes. Here an example 🐐:
 
-![full_attributes](../Gerard-project-II-v2/images/full_attributes.jpeg)
+![full_attributes](/images/full_attributes.jpeg)
 
 The range of attibutes is quite extensive, and its goal is to define as precisely as possible the playing style of that given character.
 
@@ -21,7 +21,7 @@ The range of attibutes is quite extensive, and its goal is to define as precisel
 
 The Ballon d'Or is an annual football award presented by French news magazine France Football since 1956. Conceived by sports writers Gabriel Hanot and Jacques Ferran, the Ballon d'Or award honours the male and female players deemed to have performed the best over the previous year, based on voting by football journalists, and coaches and national teams capitains from countries belonging to FIFA World Ranking top 100.
 
-![ballon_dor](../Gerard-project-II-v2/images/ballon_dor.webp)
+![ballon_dor](images/ballon_dor.webp)
 
 
 ## Report objectives 🎯
