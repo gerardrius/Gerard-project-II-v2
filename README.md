@@ -6,7 +6,7 @@ FIFA, also known as FIFA Football and to be rebranded as EA Sports FC from 2023,
 ### 🕺🏼 FIFA is widely considered the best sports video game franchise in the world!
 
 <center>
-<img src=images/giphy.gif alt=“kang” width=“500”/>
+<img src=images/giphy.gif alt=“kang” width=“1000”/>
 </center>
 
 ![dancing_gif](images/giphy.gif)
