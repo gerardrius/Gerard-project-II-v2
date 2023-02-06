@@ -3,13 +3,25 @@ import requests
 from bs4 import BeautifulSoup
 import re
 
+# FIFA RATINGS CLEANING FUNCTIONS
 def csv_reader (file):
+    """
+    csv reader function
+    """
     return pd.read_csv(file, low_memory = False)
      
-# First, we define the function that will iterate through every column of the dataset asking us if we want to keep it or not:
+
 def column_droper(df):
+    """
+    Function that asks for every column in a dataset whether we want to keep it or not
+    Accepts the dataset to filter by columns as argument
+    Returns the same dataset filtered
+    """
+
+    # Iteration for every column in the dataset
     for column in df.columns:
         column_keeper = "--"
+        # Accepts input (Y/N) to keep or drop a column 
         while len(column_keeper) != 1 and column_keeper not in ["Y", "N"]:
             column_keeper = input(f"Do you want to keep column {column}? (Y/N)")
             if column_keeper == "Y":
@@ -144,6 +156,7 @@ def points_column_append (df, top10_year, classification):
     """
     info_dict = {"long_name": [], "fifa_index": [], "rating": [], "points": [], "short_name": []}
     
+    # Iteration of each player in a given year top10. If the regex expression match a long name in df, it appends that long name in the dictionary long_name key.
     for player in top10_year:
         for long_name in df["long_name"]:
             if re.match(regex_dict[player], long_name):
@@ -151,19 +164,70 @@ def points_column_append (df, top10_year, classification):
             else:
                 pass
     
+    # For every long name in the dictionary_key -> appends the index of that name in the FIFA rating dataset.
+    # It will be essential to match a player and its Ballon d'Or points.
     for player in info_dict["long_name"]:
         info_dict['fifa_index'].append(df[(df['long_name'] == player)].index[0])
 
+    # For every FIFA rating index, appends the rating to the correspondent dictionary key 
     for i in range(len(info_dict['fifa_index'])):
         info_dict["rating"].append(df[(df['long_name'] == info_dict['long_name'][i])]['overall'][info_dict['fifa_index'][i]])
 
+    # Gets short name from Ballon d'Or classification dataframe
     info_dict['short_name'] = [short_name for short_name in classification['Player']]
     
+    # Appends Ballon d'Or points to the correspondent player in the dictionary.
     for i in range(len(info_dict['fifa_index'])):
         info_dict['points'].append(classification[(classification['Player'] == info_dict['short_name'][i])]['Points'][i])
 
+    # From the dictionary, we create a new dataframe with the info to merge at FIFA ratings dataframe
     merged_info = pd.DataFrame(info_dict)
+    # Sorts this dictionary by fifa_index -> now Points will match the accurate player in FIFA ratings
     merged_info.sort_values(by=["fifa_index"])
+    # Dataframe gets points column appended!
     df = df.join(merged_info["points"])
 
     return df
+
+def general_position (df):
+    """
+    Takes the dataframe as argument and appends a new column with a generic position according
+    to 'players_positions'.
+    """
+    # We define an empty list and three generic lists including all positions in the datasets.
+    general_position = []
+    attacker = ['LW', 'RW', 'ST', 'CF']
+    midfielder = ['CM', 'CAM', 'CDM']
+    defender = ['CB']
+    goalkeeper = ['GK']
+
+    # We iterate through every 'player_position' and append the generic one to the list.
+    for position in df['player_positions']:
+        if position in attacker:
+            general_position.append('ATT')
+        elif position in midfielder:
+            general_position.append('MID')
+        elif position in defender:
+            general_position.append('DEF')
+        elif position in goalkeeper:
+            general_position.append('GK')
+
+    # We append the new column to the dataframe.
+    df.insert(5, 'general_position', general_position)
+    return df
+
+def goalkeeper_df (df):
+    """
+    Function that filters by GK condition
+    Accepts the dataframe as argument and 
+    Returns the new dataframe of GK's while removes the GK from the original df.
+    """
+    fifa_gk = df[(df['player_positions'] == "GK")]
+    fifa_gk.reset_index(drop = True, inplace = True)
+
+    GK_condition = df[(df['player_positions'] == "GK")].index
+    df = df.drop(GK_condition)
+
+    return fifa_gk
+
+# VISUALIZATION FUNCTIONS
