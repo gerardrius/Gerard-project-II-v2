@@ -43,6 +43,9 @@ Last, we will try to predict which would have been the winner of 2020's Ballon d
 - Minor adjustments: generic position
 
 ### Statistical analysis and visualizations
+Correlations between Ballon d'Or points and FIFA ratings.
+Definition of FIFA attributes of interest
+
 Players
 - Ratings
 
